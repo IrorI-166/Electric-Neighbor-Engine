@@ -182,7 +182,7 @@ def main():
         get_stream(set)
     
     finally:
-        with open('./MOD_Create_Data/tweet/pre-conversation.json', 'a', encoding='UTF-8') as f:
+        with open('./MOD_Create_Data/tweet/pre-conversation.json', 'w', encoding='UTF-8') as f:
             json.dump(json_dict, f, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__":

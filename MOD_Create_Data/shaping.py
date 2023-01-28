@@ -16,12 +16,14 @@ with open('./MOD_Create_Data/tweet/pre-conversation.json', 'r', encoding='UTF-8'
 
 data_index = len(pre_learninngdata_list) / 2
 
+keywords = [("集客構築", "販売"), ("いいね", "現金")]
+
 def txt_judge(REQ_txt, RES_txt):
     for word in EXword_list:
         if (word in REQ_txt) or (word in RES_txt):
             pattern = 1
             return pattern
-        elif ("集客構築" and "販売" in REQ_txt) or ("集客構築" and "販売" in RES_txt):
+        elif any(all(word in s for word in keyword) for keyword in keywords for s in [REQ_txt, RES_txt]):
             pattern = 1
             return pattern
         else:
@@ -30,9 +32,11 @@ def txt_judge(REQ_txt, RES_txt):
 
 def txt_shape(REQ_txt, RES_txt):
     REQ_txt = REQ_txt.replace('\n','')
-    RES_txt = RES_txt.replace('\n','')
     REQ_txt = re.sub('@[0-9a-zA-Z_]{1,15} ', '', REQ_txt)
+    REQ_txt = re.sub('https?://[\w/:%#\$&\?\(\)~\.=\+\-]+', '', REQ_txt)
+    RES_txt = RES_txt.replace('\n','')
     RES_txt = re.sub('@[0-9a-zA-Z_]{1,15} ', '', RES_txt)
+    RES_txt = re.sub('https?://[\w/:%#\$&\?\(\)~\.=\+\-]+', '', RES_txt)
     return REQ_txt, RES_txt
 
 for i in range(int(data_index)):
@@ -45,3 +49,5 @@ for i in range(int(data_index)):
     REQ_txt, RES_txt = txt_shape(REQ_txt, RES_txt)
     with open("./MOD_Create_Data/tweet/learninng-data.txt", 'a', encoding='UTF-8') as fp:
         fp.write(f'REQ:{REQ_txt}\nRES:{RES_txt}\n')
+
+print("成形完了")
