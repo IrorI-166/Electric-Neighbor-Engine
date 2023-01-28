@@ -5,13 +5,13 @@ import re
 data_list = []
 EXword_list = []
 
-with open('./Exclusion-words.txt','r',encoding='UTF-8') as l:
+with open('MOD_Create_Data\Exclusion-words.txt','r',encoding='UTF-8') as l:
     preEXword_list = l.readlines()
     for ex in preEXword_list:
         ex = ex.replace('\n', '')
         EXword_list.append(ex)
 
-with open('tweet\pre-conversation.json', 'r', encoding='UTF-8') as p:
+with open('MOD_Create_Data\tweet\pre-conversation.json', 'r', encoding='UTF-8') as p:
     pre_learninngdata_list = json.load(p)
 
 data_index = len(pre_learninngdata_list) / 2
@@ -43,5 +43,5 @@ for i in range(int(data_index)):
         continue
     
     REQ_txt, RES_txt = txt_shape(REQ_txt, RES_txt)
-    with open("tweet\learninng-data.txt", 'a', encoding='UTF-8') as fp:
+    with open("MOD_Create_Data\tweet\learninng-data.txt", 'a', encoding='UTF-8') as fp:
         fp.write(f'REQ:{REQ_txt}\nRES:{RES_txt}\n')

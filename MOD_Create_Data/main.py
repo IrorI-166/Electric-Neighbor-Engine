@@ -5,7 +5,6 @@ from datetime import datetime
 import requests
 import os
 import json
-import ndjson
 import time
 
 lowpre_json_dict = {}
@@ -15,7 +14,7 @@ json_dict = {}
 dict_count = 0
 for_index_count = 0
 
-with open('./Exclusion-words.txt','r',encoding='UTF-8') as l:
+with open('MOD_Create_Data\Exclusion-words.txt','r',encoding='UTF-8') as l:
     word_list = l.read()
 
 # To set your enviornment variables in your terminal run the following line:
@@ -183,7 +182,7 @@ def main():
         get_stream(set)
     
     finally:
-        with open("tweet\pre-conversation.json", "a", encoding='UTF-8') as f:
+        with open('./MOD_Create_Data/tweet/pre-conversation.json', 'a', encoding='UTF-8') as f:
             json.dump(json_dict, f, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__":
