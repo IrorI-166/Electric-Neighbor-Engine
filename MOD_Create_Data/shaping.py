@@ -16,7 +16,10 @@ with open('./MOD_Create_Data/tweet/pre-conversation.json', 'r', encoding='UTF-8'
 
 data_index = len(pre_learninngdata_list) / 2
 
-keywords = [("集客構築", "販売"), ("いいね", "現金"), ("ワク", "強制"), ("いいね", "振"), ("フォロー", "トレード"), ("皆様", "配布"), ("ア ","ナ ", "ル ")]
+keywords = [("集客構築", "販売"), ("いいね", "現金"), ("ワク", "強制"),
+            ("いいね", "振込"), ("フォロー", "トレード"), ("皆様", "配布"),
+            ("ア ","ナ ", "ル "), ("大喜利", "お題"), ("募集","@"), ("募集","＠")
+            ]
 
 def txt_judge(REQ_txt, RES_txt):
     for word in EXword_list:
