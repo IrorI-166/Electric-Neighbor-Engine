@@ -14,9 +14,6 @@ json_dict = {}
 dict_count = 0
 for_index_count = 0
 
-with open('MOD_Create_Data\Exclusion-words.txt','r',encoding='UTF-8') as l:
-    word_list = l.read()
-
 # To set your enviornment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
 os.environ['BEARER_TOKEN'] = 'AAAAAAAAAAAAAAAAAAAAADWDfwEAAAAAiMXwuka0tCR3KLnqV7ylR6jdYTM%3DA8roriDF6VYrQ2Pr9Lsl4JR9BLlcKeDhsfY2EIBoZmZAZhVycC'
@@ -134,15 +131,6 @@ def getTweetsFromConversation(conversation_id):
                 print(f"{count}: {tweet['text']}")
 
                 c_tweet = tweet['text'].strip()
-                for word in word_list:
-                    if word in c_tweet:
-                        continue
-                    if word in mother_tweet:
-                        continue
-                    if 'フォロー' and 'RT' in mother_tweet:
-                        continue
-                    elif '譲' and '求' in mother_tweet:
-                        continue
                 
                 lowpre_json_dict = {'REQ'+str(for_index_count)+str(dict_count):mother_tweet, 'RES'+str(for_index_count)+str(dict_count):c_tweet}
                 highpre_json_dict.update(lowpre_json_dict)
