@@ -29,6 +29,9 @@ def txt_judge(REQ_txt, RES_txt):
         elif any(all(word in s for word in keyword) for keyword in keywords for s in [REQ_txt, RES_txt]):
             pattern = 1
             return pattern
+        elif (not REQ_txt) or (not RES_txt):
+            pattern = 1
+            return pattern
         else:
             pattern = 0
     return pattern
@@ -45,11 +48,13 @@ def txt_shape(REQ_txt, RES_txt):
 for i in range(int(data_index)):
     REQ_txt = pre_learninngdata_list['REQ'+str(i)+str(i)]
     RES_txt = pre_learninngdata_list['RES'+str(i)+str(i)]
+
+    REQ_txt, RES_txt = txt_shape(REQ_txt, RES_txt)
+
     pattern = txt_judge(REQ_txt, RES_txt)
     if pattern == 1:
         continue
-    
-    REQ_txt, RES_txt = txt_shape(REQ_txt, RES_txt)
+
     with open("./MOD_Create_Data/tweet/learninng-data.txt", 'a', encoding='UTF-8') as fp:
         fp.write(f'REQ:{REQ_txt}\nRES:{RES_txt}\n')
 
