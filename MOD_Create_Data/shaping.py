@@ -94,6 +94,7 @@ for text in Learninngdata_list:
 
 ###
 #単語出現数カウントフェーズ
+#Written by Mr.Zeruku
 ###
 print("単語出現数カウントフェーズ")
 
