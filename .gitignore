@@ -3,3 +3,6 @@ Scripts
 *.cfg
 ENE_brain
 tweet/pre-conversation.json
+MOD_Create_Data/API-keys.txt
+MOD_Create_Data/API-keys.env
+MOD_Create_Data/__pycache__/settings.cpython-310.pyc

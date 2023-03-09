@@ -6,6 +6,7 @@ import requests
 import os
 import json
 import time
+import settings
 
 lowpre_json_dict = {}
 highpre_json_dict = {}
@@ -16,9 +17,7 @@ for_index_count = 0
 
 # To set your enviornment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
-os.environ['BEARER_TOKEN'] = 'AAAAAAAAAAAAAAAAAAAAADWDfwEAAAAAiMXwuka0tCR3KLnqV7ylR6jdYTM%3DA8roriDF6VYrQ2Pr9Lsl4JR9BLlcKeDhsfY2EIBoZmZAZhVycC'
-bearer_token = os.environ.get("BEARER_TOKEN")
-
+bearer_token = settings.BT
 
 def bearer_oauth(r):
     """
